@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECD Kangen — Authorized Enagic Kangen Water® Distributor | East Coast Designers</title>
+<meta name="description" content="ECD Kangen, by East Coast Designers — your authorized Enagic Kangen Water® distributor. Explore the full machine lineup, in-house financing, free local water samples, and a free 30-minute consultation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a1f2e;
+  --deep:#0d2b3e;
+  --teal:#0e7c86;
+  --aqua:#1aa7b0;
+  --mint:#7fd4c9;
+  --foam:#eef9f7;
+  --sand:#f7f4ec;
+  --gold:#c9a24b;
+  --paper:#ffffff;
+  --muted:#5a6b73;
+  --line:rgba(10,31,46,.10);
+  --shadow:0 18px 50px -22px rgba(10,31,46,.45);
+  --r:18px;
+  --display:'Fraunces',Georgia,serif;
+  --body:'Outfit',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.08;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--teal)}
+
+/* nav */
+header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:1.25rem;letter-spacing:-.02em}
+.brand .mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,var(--teal),var(--aqua));display:grid;place-items:center;color:#fff;font-weight:700;font-size:.95rem;font-family:var(--body)}
+.brand small{display:block;font-family:var(--body);font-weight:500;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:1px}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{font-size:.92rem;font-weight:500;color:var(--ink);opacity:.8;transition:.2s}
+.nav-links a:hover{opacity:1;color:var(--teal)}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:13px 24px;border-radius:100px;font-family:var(--body);font-weight:600;font-size:.93rem;cursor:pointer;border:none;transition:transform .2s,box-shadow .2s;white-space:nowrap}
+.btn-primary{background:linear-gradient(135deg,var(--teal),var(--aqua));color:#fff;box-shadow:0 10px 28px -10px rgba(14,124,134,.7)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(14,124,134,.8)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
+.nav-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink)}
+
+/* hero */
+.hero{position:relative;padding:88px 0 96px;background:
+  radial-gradient(1100px 600px at 85% -10%, #d7f1ee 0%, transparent 55%),
+  radial-gradient(900px 500px at -10% 30%, #eef9f7 0%, transparent 50%),
+  linear-gradient(180deg,#fbfdfc, #ffffff);
+  overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(10,31,46,.05) 1px, transparent 0);background-size:26px 26px;opacity:.5;pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:54px;align-items:center;position:relative}
+.hero h1{font-size:clamp(2.6rem,5.2vw,4.3rem);margin:18px 0 0}
+.hero h1 em{font-style:italic;color:var(--teal)}
+.hero p.lead{font-size:1.16rem;color:var(--muted);margin:22px 0 30px;max-width:33ch}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.trust{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+.trust div{font-size:.86rem;color:var(--muted)}
+.trust b{display:block;font-family:var(--display);font-size:1.5rem;color:var(--ink);font-weight:600}
+.hero-art{position:relative;aspect-ratio:4/5;border-radius:28px;background:linear-gradient(160deg,var(--deep),var(--teal) 70%,var(--aqua));box-shadow:var(--shadow);overflow:hidden;display:grid;place-items:center}
+.hero-art:after{content:"";position:absolute;inset:0;background:radial-gradient(400px 400px at 70% 20%, rgba(255,255,255,.22), transparent 60%)}
+.droplet{position:relative;z-index:2;text-align:center;color:#fff;padding:30px}
+.droplet .glass{width:150px;height:150px;margin:0 auto 22px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:linear-gradient(160deg,rgba(255,255,255,.35),rgba(255,255,255,.08));border:1.5px solid rgba(255,255,255,.4);backdrop-filter:blur(4px);position:relative;animation:float 5s ease-in-out infinite}
+.droplet .glass:before{content:"";position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(180deg,rgba(127,212,201,.55),rgba(26,167,176,.7));border-radius:0 0 50% 50%/0 0 100% 100%}
+.droplet .glass:after{content:"";position:absolute;top:18%;left:24%;width:26px;height:40px;border-radius:50%;background:rgba(255,255,255,.5);transform:rotate(-18deg)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.droplet h3{font-size:1.5rem;color:#fff}
+.droplet p{opacity:.85;font-size:.95rem;margin-top:6px}
+.badge-row{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:8px;background:rgba(255,255,255,.16);padding:8px 14px;border-radius:100px;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);font-size:.74rem;color:#fff;white-space:nowrap}
+
+/* marquee strip */
+.strip{background:var(--ink);color:#fff;padding:16px 0;overflow:hidden}
+.strip-track{display:flex;gap:46px;white-space:nowrap;animation:scroll 26s linear infinite;font-size:.92rem;letter-spacing:.04em}
+.strip-track span{opacity:.85;display:inline-flex;gap:46px}
+.strip-track b{color:var(--mint);font-weight:500}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* section */
+section.block{padding:90px 0}
+.sec-head{max-width:640px;margin-bottom:48px}
+.sec-head.center{margin:0 auto 52px;text-align:center}
+.sec-head h2{font-size:clamp(2rem,3.6vw,2.9rem);margin:14px 0 0}
+.sec-head p{color:var(--muted);font-size:1.08rem;margin-top:16px}
+
+/* machines */
+.machines{background:linear-gradient(180deg,#fff,var(--foam))}
+.grid-m{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.mcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;overflow:hidden}
+.mcard:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:transparent}
+.mcard .tag{position:absolute;top:18px;right:18px;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:100px;background:var(--foam);color:var(--teal)}
+.mcard .tag.flag{background:var(--gold);color:#fff}
+.mcard .vis{height:120px;border-radius:14px;margin-bottom:18px;background:linear-gradient(150deg,var(--deep),var(--teal));display:grid;place-items:center;position:relative;overflow:hidden}
+.mcard .vis svg{width:54px;height:54px}
+.mcard .vis:after{content:"";position:absolute;inset:0;background:radial-gradient(220px 120px at 75% 10%,rgba(255,255,255,.2),transparent 60%)}
+.mcard h3{font-size:1.32rem}
+.mcard .plates{font-size:.8rem;color:var(--teal);font-weight:600;margin:4px 0 10px;letter-spacing:.04em}
+.mcard p{font-size:.92rem;color:var(--muted);min-height:60px}
+.mcard ul{list-style:none;margin:14px 0 18px;display:flex;flex-wrap:wrap;gap:7px}
+.mcard ul li{font-size:.74rem;background:var(--sand);padding:5px 10px;border-radius:8px;color:var(--ink)}
+.mcard .mbtn{width:100%;justify-content:center}
+.fin-note{text-align:center;margin-top:34px;font-size:.96rem;color:var(--muted)}
+.fin-note b{color:var(--ink)}
+.pill{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);padding:9px 16px;border-radius:100px;font-size:.86rem;font-weight:500;margin:5px}
+.pill svg{width:16px;height:16px;color:var(--teal)}
+
+/* offers (3 intent paths) */
+.offers{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.offers:before{content:"";position:absolute;top:-30%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(26,167,176,.3),transparent 65%)}
+.offers .sec-head h2,.offers .sec-head p{color:#fff}
+.offers .sec-head p{opacity:.8}
+.grid-o{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative}
+.ocard{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:32px 26px;transition:.25s;backdrop-filter:blur(6px)}
+.ocard:hover{background:rgba(255,255,255,.09);transform:translateY(-5px)}
+.ocard .ico{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--teal),var(--aqua));display:grid;place-items:center;margin-bottom:18px}
+.ocard .ico svg{width:26px;height:26px;color:#fff}
+.ocard h3{font-size:1.3rem;color:#fff}
+.ocard p{opacity:.78;font-size:.94rem;margin:10px 0 20px}
+.ocard .obtn{background:#fff;color:var(--ink)}
+.ocard .obtn:hover{background:var(--mint)}
+
+/* how it works */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{position:relative;padding-top:14px}
+.step .n{font-family:var(--display);font-size:3rem;color:var(--mint);font-weight:600;line-height:1}
+.step h4{font-size:1.12rem;margin:8px 0 8px}
+.step p{font-size:.92rem;color:var(--muted)}
+
+/* why us / compare */
+.why{background:var(--sand)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:10px}
+.col{background:#fff;border-radius:var(--r);padding:30px;border:1px solid var(--line)}
+.col.us{border:2px solid var(--teal);box-shadow:var(--shadow)}
+.col h3{font-size:1.25rem;display:flex;align-items:center;gap:10px}
+.col.us h3{color:var(--teal)}
+.col ul{list-style:none;margin-top:18px}
+.col li{display:flex;gap:11px;padding:11px 0;border-top:1px solid var(--line);font-size:.95rem}
+.col li:first-child{border-top:none}
+.col li svg{width:19px;height:19px;flex-shrink:0;margin-top:3px}
+.us li svg{color:var(--teal)}
+.them li{color:var(--muted)}
+
+/* lead form / CRM intake */
+.cta-band{background:linear-gradient(135deg,var(--deep),var(--teal));color:#fff;border-radius:26px;padding:54px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;box-shadow:var(--shadow)}
+.cta-band h2{color:#fff;font-size:2.2rem}
+.cta-band p{opacity:.85;margin-top:14px}
+.form{background:#fff;border-radius:18px;padding:28px}
+.form h3{color:var(--ink);font-size:1.2rem;margin-bottom:6px}
+.form .sub{font-size:.86rem;color:var(--muted);margin-bottom:18px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:.8rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:11px;font-family:var(--body);font-size:.95rem;color:var(--ink);background:#fff;transition:.2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,124,134,.12)}
+.intent-opts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px}
+.intent-opts label{display:block;cursor:pointer}
+.intent-opts input{position:absolute;opacity:0}
+.intent-opts .opt{border:1.5px solid var(--line);border-radius:11px;padding:12px 8px;text-align:center;font-size:.78rem;font-weight:600;color:var(--muted);transition:.2s}
+.intent-opts input:checked + .opt{border-color:var(--teal);background:var(--foam);color:var(--teal)}
+.form .btn{width:100%;justify-content:center;margin-top:6px}
+.form-success{display:none;text-align:center;padding:20px 0}
+.form-success.show{display:block}
+.form-success .check{width:60px;height:60px;border-radius:50%;background:var(--foam);display:grid;place-items:center;margin:0 auto 14px}
+.form-success svg{width:30px;height:30px;color:var(--teal)}
+
+/* faq */
+.faq-item{border-top:1px solid var(--line);padding:6px 0}
+.faq-item summary{cursor:pointer;list-style:none;padding:18px 0;font-family:var(--display);font-weight:600;font-size:1.12rem;display:flex;justify-content:space-between;align-items:center}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .pm{transition:.25s;color:var(--teal);font-size:1.5rem;font-weight:300}
+.faq-item[open] summary .pm{transform:rotate(45deg)}
+.faq-item p{padding:0 0 20px;color:var(--muted);font-size:.97rem;max-width:80ch}
+
+/* footer */
+footer{background:var(--ink);color:#fff;padding:64px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px}
+.foot-grid h5{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;opacity:.6;margin-bottom:16px}
+.foot-grid a{display:block;opacity:.8;padding:6px 0;font-size:.92rem;transition:.2s}
+.foot-grid a:hover{opacity:1;color:var(--mint)}
+.foot-grid p{opacity:.75;font-size:.92rem;margin-top:12px;max-width:34ch}
+.disclaimer{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;font-size:.78rem;opacity:.6;line-height:1.7}
+.foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:22px;font-size:.82rem;opacity:.6}
+
+/* AI chat widget */
+.chat-fab{position:fixed;bottom:24px;right:24px;z-index:80;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--aqua));border:none;cursor:pointer;box-shadow:0 14px 34px -8px rgba(14,124,134,.7);display:grid;place-items:center;transition:transform .25s}
+.chat-fab:hover{transform:scale(1.07)}
+.chat-fab svg{width:28px;height:28px;color:#fff}
+.chat-fab .dot{position:absolute;top:6px;right:6px;width:13px;height:13px;background:var(--gold);border:2px solid #fff;border-radius:50%}
+.chat-panel{position:fixed;bottom:98px;right:24px;z-index:81;width:380px;max-width:calc(100vw - 32px);height:540px;max-height:calc(100vh - 130px);background:#fff;border-radius:22px;box-shadow:0 30px 70px -18px rgba(10,31,46,.5);display:none;flex-direction:column;overflow:hidden;border:1px solid var(--line)}
+.chat-panel.open{display:flex;animation:pop .25s ease}
+@keyframes pop{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.chat-head{background:linear-gradient(135deg,var(--deep),var(--teal));color:#fff;padding:18px 20px;display:flex;align-items:center;gap:12px}
+.chat-head .av{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-weight:700;font-family:var(--display)}
+.chat-head h4{color:#fff;font-size:1.02rem}
+.chat-head p{font-size:.74rem;opacity:.8}
+.chat-head .x{margin-left:auto;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;opacity:.8}
+.chat-body{flex:1;overflow-y:auto;padding:18px;background:var(--foam);display:flex;flex-direction:column;gap:12px}
+.msg{max-width:84%;padding:11px 15px;border-radius:16px;font-size:.9rem;line-height:1.5}
+.msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:5px}
+.msg.user{background:linear-gradient(135deg,var(--teal),var(--aqua));color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
+.msg.typing{display:flex;gap:4px;align-self:flex-start;background:#fff;border:1px solid var(--line)}
+.msg.typing span{width:7px;height:7px;background:var(--muted);border-radius:50%;animation:blink 1.2s infinite}
+.msg.typing span:nth-child(2){animation-delay:.2s}.msg.typing span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.chat-quick{display:flex;gap:7px;flex-wrap:wrap;padding:0 18px 10px;background:var(--foam)}
+.chat-quick button{font-size:.76rem;border:1px solid var(--teal);color:var(--teal);background:#fff;padding:7px 12px;border-radius:100px;cursor:pointer;transition:.2s}
+.chat-quick button:hover{background:var(--teal);color:#fff}
+.chat-input{display:flex;gap:8px;padding:14px;border-top:1px solid var(--line);background:#fff}
+.chat-input input{flex:1;border:1.5px solid var(--line);border-radius:100px;padding:11px 16px;font-family:var(--body);font-size:.9rem}
+.chat-input input:focus{outline:none;border-color:var(--teal)}
+.chat-input button{background:var(--teal);border:none;width:42px;height:42px;border-radius:50%;cursor:pointer;display:grid;place-items:center;flex-shrink:0}
+.chat-input button svg{width:18px;height:18px;color:#fff}
+
+/* modal (booking + CRM) */
+.modal-bg{position:fixed;inset:0;z-index:90;background:rgba(10,31,46,.55);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px}
+.modal-bg.open{display:flex}
+.modal{background:#fff;border-radius:22px;width:100%;max-width:560px;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow);position:relative}
+.modal-x{position:absolute;top:16px;right:18px;background:var(--foam);border:none;width:34px;height:34px;border-radius:50%;font-size:1.2rem;cursor:pointer;color:var(--ink);z-index:2}
+.modal-pad{padding:36px}
+.modal h2{font-size:1.7rem}
+.modal .sub{color:var(--muted);margin:8px 0 22px}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.slots label input{position:absolute;opacity:0}
+.slots .slot{border:1.5px solid var(--line);border-radius:10px;padding:11px 4px;text-align:center;font-size:.82rem;font-weight:600;cursor:pointer;transition:.2s}
+.slots input:checked + .slot{border-color:var(--teal);background:var(--foam);color:var(--teal)}
+
+/* CRM dashboard */
+.crm-link{position:fixed;bottom:24px;left:24px;z-index:79;font-size:.74rem;background:var(--ink);color:#fff;padding:8px 14px;border-radius:100px;cursor:pointer;opacity:.5;transition:.2s;border:none;font-family:var(--body)}
+.crm-link:hover{opacity:1}
+.crm-modal .modal{max-width:920px}
+.crm-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat{background:var(--foam);border-radius:14px;padding:16px}
+.stat b{font-family:var(--display);font-size:1.9rem;display:block;color:var(--teal)}
+.stat span{font-size:.76rem;color:var(--muted)}
+.crm-table{width:100%;border-collapse:collapse;font-size:.84rem}
+.crm-table th{text-align:left;padding:10px;border-bottom:2px solid var(--line);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.crm-table td{padding:11px 10px;border-bottom:1px solid var(--line)}
+.crm-table tr:hover{background:var(--foam)}
+.lead-tag{font-size:.68rem;font-weight:600;padding:3px 9px;border-radius:100px}
+.lt-info{background:#e8f0fe;color:#1a56b0}
+.lt-sample{background:#e6f7ee;color:#0a7a3f}
+.lt-consult{background:#fdf0e0;color:#b06a0a}
+.lt-buy{background:#f0e6fb;color:#6a2db0}
+.crm-empty{text-align:center;padding:40px;color:var(--muted)}
+.crm-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.crm-actions .btn{font-size:.82rem;padding:10px 18px}
+
+@media(max-width:900px){
+  .hero-grid,.cta-band{grid-template-columns:1fr;gap:34px}
+  .hero-art{max-width:420px;margin:0 auto}
+  .grid-m,.grid-o,.compare{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .crm-stats{grid-template-columns:1fr 1fr}
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;background:#fff;flex-direction:column;padding:20px 24px;gap:6px;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+  .nav-links.show{display:flex}
+  .nav-links a{padding:10px 0;opacity:1}
+  .nav-toggle{display:block}
+  .modal-pad{padding:26px 22px}
+}
+@media(max-width:560px){.intent-opts,.slots{grid-template-columns:1fr 1fr}.steps,.foot-grid,.crm-stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">
+      <span class="mark">ECD</span>
+      <span>ECD Kangen<small>By East Coast Designers</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#machines">Machines</a>
+      <a href="#certs">Certified</a>
+      <a href="#offers">Free Trial</a>
+      <a href="#how">How It Works</a>
+      <a href="#why">Why ECD</a>
+      <a href="#faq">FAQ</a>
+      <button class="btn btn-primary" onclick="openBooking()">Book Free Consult</button>
+    </nav>
+    <button class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('show')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Authorized Enagic® Independent Distributor</span>
+      <h1>Better water,<br><em>delivered the right way.</em></h1>
+      <p class="lead">ECD Kangen brings you the full lineup of Enagic Kangen Water® ionizers — with in-house financing, credit cards accepted, and real local support. Taste it before you buy.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary" onclick="openBooking()">Book Your Free 30-Min Consult →</button>
+        <button class="btn btn-ghost" onclick="scrollTo2('#offers')">Try It Free Locally</button>
+      </div>
+      <div class="trust">
+        <div><b>6+</b>Machine models</div>
+        <div><b>0%</b>In-house financing*</div>
+        <div><b>1 of 1</b>Medical-device certified*</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="droplet">
+        <div class="glass"></div>
+        <h3>Kangen Water®</h3>
+        <p>Hydrogen-rich, ionized, freshly made at home</p>
+      </div>
+      <div class="badge-row">★ Made in Japan · ISO 9001 · 5-Yr Warranty</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    <span><b>✓</b> In-house financing available &nbsp;&nbsp; <b>✓</b> All major credit cards accepted &nbsp;&nbsp; <b>✓</b> Pay in full or deposit + installments &nbsp;&nbsp; <b>✓</b> Free local water samples &nbsp;&nbsp; <b>✓</b> Authorized Enagic distributor &nbsp;&nbsp; <b>✓</b> 5-year warranty</span>
+    <span><b>✓</b> In-house financing available &nbsp;&nbsp; <b>✓</b> All major credit cards accepted &nbsp;&nbsp; <b>✓</b> Pay in full or deposit + installments &nbsp;&nbsp; <b>✓</b> Free local water samples &nbsp;&nbsp; <b>✓</b> Authorized Enagic distributor &nbsp;&nbsp; <b>✓</b> 5-year warranty</span>
+  </div>
+</div>
+
+<!-- MACHINES -->
+<section class="block machines" id="machines">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">The Lineup</span>
+      <h2>Find the machine that fits your life</h2>
+      <p>From compact starters to the flagship 8-plate K8, every Enagic ionizer is built in Japan to the same exacting standard. Not sure which one? That's what the free consult is for.</p>
+    </div>
+    <div class="grid-m" id="machineGrid"></div>
+    <div class="fin-note">
+      <span class="pill"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Credit / debit cards accepted</span>
+      <span class="pill"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> In-house financing</span>
+      <span class="pill"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Pay in full · deposit · installments</span>
+</section>
+
+<!-- CERTIFICATIONS / MEDICAL DEVICE -->
+<section class="block" id="certs" style="background:linear-gradient(180deg,var(--foam),#fff)">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Certified Quality</span>
+      <h2>The only ionizer certified as a medical device in Japan</h2>
+      <p>This is what sets Enagic apart from every other water ionizer on the market. The certification is about the device's regulatory classification and manufacturing standard — we make no claims that the water heals or treats anything.</p>
+    </div>
+    <div class="grid-o" style="grid-template-columns:repeat(4,1fr)">
+      <div class="ocard" style="background:#fff;border:1px solid var(--line);color:var(--ink)">
+        <div class="ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+        <h3 style="color:var(--ink);font-size:1.12rem">Japan Medical Device</h3>
+        <p style="opacity:1;color:var(--muted)">Certified as a medical device by Japan's Ministry of Health, Labour and Welfare.</p>
+      </div>
+      <div class="ocard" style="background:#fff;border:1px solid var(--line);color:var(--ink)">
+        <div class="ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></div>
+        <h3 style="color:var(--ink);font-size:1.12rem">ISO 13485</h3>
+        <p style="opacity:1;color:var(--muted)">Manufactured to the international quality standard built specifically for medical devices.</p>
+      </div>
+      <div class="ocard" style="background:#fff;border:1px solid var(--line);color:var(--ink)">
+        <div class="ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7h-9M14 17H5M17 3l3 4-3 4M7 13l-3 4 3 4"/></svg></div>
+        <h3 style="color:var(--ink);font-size:1.12rem">ISO 9001 + WQA Gold Seal</h3>
+        <p style="opacity:1;color:var(--muted)">Independently certified quality management and Water Quality Association Gold Seal.</p>
+      </div>
+      <div class="ocard" style="background:#fff;border:1px solid var(--line);color:var(--ink)">
+        <div class="ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3M9 9v.01M9 12v.01M9 15v.01"/></svg></div>
+        <h3 style="color:var(--ink);font-size:1.12rem">Used in 200+ Hospitals</h3>
+        <p style="opacity:1;color:var(--muted)">Enagic Kangen Water systems are in use in hundreds of hospitals across Japan.</p>
+      </div>
+    </div>
+    <p class="fin-note" style="margin-top:30px">Built in Japan by a single technician per machine · 15–25 year lifespan · 5-year warranty. <b>Certified paperwork included with every machine.</b></p>
+  </div>
+</section>
+
+<!-- OFFERS / 3 INTENT PATHS -->
+<section class="block offers" id="offers">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow" style="color:var(--mint)">Three Easy Ways to Start</span>
+      <h2>No commitment. Just try it.</h2>
+      <p>Most people buy after they taste the difference. Pick whichever feels right — it's all free.</p>
+    </div>
+    <div class="grid-o">
+      <div class="ocard">
+        <div class="ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <h3>Free Info Pack</h3>
+        <p>Get the full rundown on every machine, the technology, warranty, and financing — sent straight to your inbox. Zero obligation.</p>
+        <button class="btn obtn" onclick="openLead('info')">Send Me the Info →</button>
+      </div>
+      <div class="ocard">
+        <div class="ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+        <h3>Free Gallons to Test</h3>
+        <p>Local to us? We'll get you <b>free gallons of Kangen Water®</b> to try at home for a few days. Taste it, feel it, decide for yourself.</p>
+        <button class="btn obtn" onclick="openLead('sample')">Claim Free Water →</button>
+      </div>
+      <div class="ocard">
+        <div class="ico"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <h3>Free 30-Min Consult</h3>
+        <p>Book a relaxed 30-minute call. We'll cover the machines, the benefits, financing options, and answer everything — then you decide.</p>
+        <button class="btn obtn" onclick="openBooking()">Pick a Time →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="block" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Simple Process</span>
+      <h2>From curious to flowing in 4 steps</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h4>Reach out</h4><p>Grab the free info, free water, or book a consult. We'll get to know what you're looking for.</p></div>
+      <div class="step"><div class="n">2</div><h4>Taste the difference</h4><p>Try the water yourself or see a live demo. This is the moment most people are sold.</p></div>
+      <div class="step"><div class="n">3</div><h4>Pick your plan</h4><p>Choose your machine and a payment option — pay in full, card, or in-house financing.</p></div>
+      <div class="step"><div class="n">4</div><h4>Enjoy + share</h4><p>Your machine ships from Enagic. With every purchase you can also become a distributor.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ECD -->
+<section class="block why" id="why">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">The ECD Difference</span>
+      <h2>Why buy through ECD Kangen</h2>
+      <p>Same Enagic machines, same warranty — but a buying experience that respects you.</p>
+    </div>
+    <div class="compare">
+      <div class="col us">
+        <h3><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg> ECD Kangen</h3>
+        <ul>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Try the water free before you spend a dollar</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Clear financing & payment options up front</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Honest guidance — no hype, no health hype</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> Real local support & demos</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg> AI assistant answers questions 24/7</li>
+        </ul>
+      </div>
+      <div class="col them">
+        <h3>Typical sellers</h3>
+        <ul>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg> High-pressure sales pitches</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg> Hidden pricing & confusing terms</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg> Exaggerated medical claims</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg> No way to try before buying</li>
+          <li><svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg> Slow, generic websites</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND + LEAD FORM -->
+<section class="block" id="contact">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <span class="eyebrow" style="color:var(--mint)">Let's Talk Water</span>
+        <h2>Start with a free sample or a quick consult.</h2>
+        <p>Fill this out and tell us what you'd like. We'll reach out fast — and we'll send free info, arrange free water if you're local, or book your consult. Your details stay private.</p>
+        <div class="trust" style="margin-top:24px">
+          <div><b style="color:#fff">⚡</b><span style="color:rgba(255,255,255,.85)">Fast response</span></div>
+          <div><b style="color:#fff">🔒</b><span style="color:rgba(255,255,255,.85)">Private & secure</span></div>
+          <div><b style="color:#fff">💬</b><span style="color:rgba(255,255,255,.85)">No pressure</span></div>
+        </div>
+      </div>
+      <div class="form" id="leadFormWrap">
+        <h3 id="leadFormTitle">Get Started Free</h3>
+        <p class="sub" id="leadFormSub">Tell us what you're interested in:</p>
+        <form id="leadForm" onsubmit="return submitLead(event)">
+          <div class="intent-opts">
+            <label><input type="radio" name="intent" value="info" checked><span class="opt">Free Info</span></label>
+            <label><input type="radio" name="intent" value="sample"><span class="opt">Free Water</span></label>
+            <label><input type="radio" name="intent" value="consult"><span class="opt">Consult</span></label>
+          </div>
+          <div class="field"><label>Full name</label><input name="name" required placeholder="Your name"></div>
+          <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@email.com"></div>
+          <div class="field"><label>Phone</label><input name="phone" type="tel" placeholder="(optional)"></div>
+          <div class="field"><label>City / ZIP (for free water eligibility)</label><input name="location" placeholder="e.g. Bridgeport, CT"></div>
+          <div class="field"><label>Anything you'd like us to know?</label><textarea name="notes" rows="2" placeholder="Questions, which machine, etc."></textarea></div>
+          <button class="btn btn-primary">Send →</button>
+        </form>
+        <div class="form-success" id="leadSuccess">
+          <div class="check"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+          <h3>You're all set!</h3>
+          <p class="sub">We've got your info and we'll be in touch shortly. Check your email.</p>
+          <button class="btn btn-ghost" onclick="resetLead()">Submit another</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="block" id="faq" style="background:var(--foam)">
+  <div class="wrap" style="max-width:860px">
+    <div class="sec-head center">
+      <span class="eyebrow">Good Questions</span>
+      <h2>The honest FAQ</h2>
+    </div>
+    <details class="faq-item" open><summary>What is Kangen Water®? <span class="pm">+</span></summary><p>Kangen Water® is Enagic's brand name for alkaline, hydrogen-rich water produced by their electrolysis ionizer machines. The machines filter your tap water and then ionize it, producing several types of water (drinking, beauty, cleaning) at different pH levels. We focus on what it actually is — clean, ionized, great-tasting water — not on medical claims.</p></details>
+    <details class="faq-item"><summary>How much do the machines cost? <span class="pm">+</span></summary><p>Pricing varies by model and current Enagic terms, so we go over exact numbers on your free consult along with the payment options that fit you. The important part: we accept credit and debit cards, offer in-house financing, and you can pay in full or with a deposit plus installments.</p></details>
+    <details class="faq-item"><summary>Can I really try it for free? <span class="pm">+</span></summary><p>Yes. If you're local to us, we'll arrange free gallons of Kangen Water® so you can taste it at home for a few days. Anyone, anywhere, can also get a free info pack and a free 30-minute consultation.</p></details>
+    <details class="faq-item"><summary>What payment options are there? <span class="pm">+</span></summary><p>Three main ways: pay in full, pay by credit/debit card, or use Enagic's in-house financing (deposit plus monthly installments). We'll walk you through current plans and terms on your consult.</p></details>
+    <details class="faq-item"><summary>Do I become a distributor when I buy? <span class="pm">+</span></summary><p>With Enagic, every machine purchase also registers you as an independent distributor if you choose — meaning you can share the water and earn commissions when others buy. It's optional, and we're happy to explain how the business side works if you're interested.</p></details>
+    <details class="faq-item"><summary>Is it really a medical device? <span class="pm">+</span></summary><p>Yes — Enagic's ionizers are certified as medical devices by Japan's Ministry of Health, Labour and Welfare, manufactured under the ISO 13485 medical-device quality standard, and used in hundreds of Japanese hospitals. It's the only water ionizer with that classification. Important: this is a Japanese regulatory certification of the device and its manufacturing — it is not a US FDA clearance, and it does not mean the water treats or cures anything. We don't make health claims.</p></details>
+    <details class="faq-item"><summary>Does Kangen Water cure or treat health conditions? <span class="pm">+</span></summary><p>No — and we won't tell you it does. Even though the machine is a certified medical device in Japan, that certification is about the device itself, not a promise about your health. The machines are not approved to diagnose, treat, cure, or prevent any disease, and we make no medical claims. We talk about hydration, taste, and water quality. For any health condition, please talk to your doctor.</p></details>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="brand" style="color:#fff"><span class="mark">ECD</span><span>ECD Kangen<small style="color:rgba(255,255,255,.6)">By East Coast Designers</small></span></a>
+        <p>Your authorized Enagic Kangen Water® independent distributor. Better water, honest guidance, real local support.</p>
+      </div>
+      <div><h5>Explore</h5><a href="#machines">Machines</a><a href="#offers">Free Trial</a><a href="#how">How It Works</a><a href="#faq">FAQ</a></div>
+      <div><h5>Get Started</h5><a href="#" onclick="openLead('info');return false">Free Info Pack</a><a href="#" onclick="openLead('sample');return false">Free Water Sample</a><a href="#" onclick="openBooking();return false">Book a Consult</a></div>
+      <div><h5>Contact</h5><a href="mailto:hello@ecdkangen.com">hello@ecdkangen.com</a><a href="tel:+10000000000">(000) 000-0000</a><a href="#" onclick="toggleChat();return false">Chat with our AI assistant</a></div>
+    </div>
+    <div class="disclaimer">
+      <strong>Important disclaimer:</strong> ECD Kangen is operated by East Coast Designers, an independent Enagic® distributor. Kangen Water®, Enagic®, and Leveluk® are registered trademarks of Enagic Co., Ltd. We are not employed by Enagic. *Enagic ionizers are certified as medical devices by Japan's Ministry of Health, Labour and Welfare; this is a Japanese regulatory classification of the device and its manufacturing, not a US FDA medical-device clearance, and it is not a claim of any health benefit. Statements on this site have not been evaluated by the FDA. The machines are not intended to diagnose, treat, cure, or prevent any disease. We make no medical or health claims. Any income from the distributor opportunity depends on individual effort and is not guaranteed. Always consult a qualified healthcare professional regarding your health.
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> East Coast Designers · ECD Kangen. All rights reserved.</span>
+      <span>Authorized Enagic Independent Distributor</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CRM access (subtle) — opens the full dashboard at /admin -->
+<a class="crm-link" href="/admin" target="_blank" rel="noopener">◈ ECD CRM</a>
+
+<!-- AI CHAT -->
+<button class="chat-fab" onclick="toggleChat()" id="chatFab">
+  <span class="dot"></span>
+  <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <div class="av">EC</div>
+    <div><h4>ECD Water Assistant</h4><p>● Online · usually replies instantly</p></div>
+    <button class="x" onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="msg bot">Hi! 👋 I'm the ECD Kangen assistant. I can tell you about the machines, financing, how to try the water free, or book your consult. What would you like to know?</div>
+  </div>
+  <div class="chat-quick" id="chatQuick">
+    <button onclick="quickAsk('What machines do you offer?')">The machines</button>
+    <button onclick="quickAsk('What are my payment options?')">Payment options</button>
+    <button onclick="quickAsk('How can I try the water for free?')">Free trial</button>
+    <button onclick="openBooking()">Book consult</button>
+  </div>
+  <div class="chat-input">
+    <input id="chatInput" placeholder="Type your question..." onkeydown="if(event.key==='Enter')sendChat()">
+    <button onclick="sendChat()"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+  </div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="modal-bg" id="bookingModal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('bookingModal')">×</button>
+    <div class="modal-pad">
+      <span class="eyebrow">Free 30-Minute Consultation</span>
+      <h2 style="margin-top:10px">Book your call</h2>
+      <p class="sub">Pick a day and time that works. We'll cover the machines, benefits, and financing — no pressure.</p>
+      <form id="bookForm" onsubmit="return submitBooking(event)">
+        <div class="field"><label>Full name</label><input name="name" required placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@email.com"></div>
+        <div class="field"><label>Phone</label><input name="phone" type="tel" placeholder="(optional)"></div>
+        <div class="field"><label>Preferred day</label><input name="day" type="date" required></div>
+        <label style="font-size:.8rem;font-weight:600;display:block;margin-bottom:6px">Preferred time</label>
+        <div class="slots">
+          <label><input type="radio" name="slot" value="9:00 AM" required><span class="slot">9:00 AM</span></label>
+          <label><input type="radio" name="slot" value="11:00 AM"><span class="slot">11:00 AM</span></label>
+          <label><input type="radio" name="slot" value="1:00 PM"><span class="slot">1:00 PM</span></label>
+          <label><input type="radio" name="slot" value="3:00 PM"><span class="slot">3:00 PM</span></label>
+          <label><input type="radio" name="slot" value="5:00 PM"><span class="slot">5:00 PM</span></label>
+          <label><input type="radio" name="slot" value="7:00 PM"><span class="slot">7:00 PM</span></label>
+        </div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:18px">Confirm Booking →</button>
+      </form>
+      <div class="form-success" id="bookSuccess">
+        <div class="check"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+        <h3>Consult booked! 🎉</h3>
+        <p class="sub" id="bookSuccessMsg"></p>
+        <button class="btn btn-ghost" onclick="closeModal('bookingModal')">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LEAD MODAL (for info / sample triggered from buttons) -->
+<div class="modal-bg" id="leadModal">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal('leadModal')">×</button>
+    <div class="modal-pad">
+      <span class="eyebrow" id="leadModalEyebrow">Free Info Pack</span>
+      <h2 style="margin-top:10px" id="leadModalTitle">Get the full details — free</h2>
+      <p class="sub" id="leadModalSub">Fill this in and we'll send everything over.</p>
+      <form id="leadModalForm" onsubmit="return submitLeadModal(event)">
+        <input type="hidden" name="intent" id="leadModalIntent" value="info">
+        <div class="field"><label>Full name</label><input name="name" required placeholder="Your name"></div>
+        <div class="field"><label>Email</label><input name="email" type="email" required placeholder="you@email.com"></div>
+        <div class="field"><label>Phone</label><input name="phone" type="tel" placeholder="(optional)"></div>
+        <div class="field" id="leadModalLocField"><label>City / ZIP</label><input name="location" placeholder="e.g. Bridgeport, CT"></div>
+        <div class="field"><label>Notes</label><textarea name="notes" rows="2" placeholder="Anything you'd like us to know?"></textarea></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center">Send →</button>
+      </form>
+      <div class="form-success" id="leadModalSuccess">
+        <div class="check"><svg fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></div>
+        <h3>Done! 🎉</h3>
+        <p class="sub">We've got your request and we'll be in touch shortly.</p>
+        <button class="btn btn-ghost" onclick="closeModal('leadModal')">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---------- MACHINE DATA ---------- */
+const machines = [
+  {name:"Leveluk K8", plates:"8 Plates · Flagship", tag:"Most Powerful", flag:true,
+   desc:"Enagic's top-of-the-line ionizer. Eight platinum-coated titanium plates for maximum performance and the strongest output.",
+   feats:["8 plates","8 languages","High flow","Best for power users"]},
+  {name:"Leveluk SD501DX", plates:"7 Plates · Gold Standard", tag:"Best Seller",
+   desc:"The modernized classic. The proven 7-plate 'gold standard' technology in a sleek, updated design with universal power.",
+   feats:["7 plates","Modern look","8-language audio","Universal power"]},
+  {name:"Leveluk SD501U", plates:"7 Plates · Under-Counter", tag:"Space Saver",
+   desc:"All the power of the SD501 platform, installed neatly under your counter for a clean, built-in kitchen look.",
+   feats:["Under-counter","7 plates","Tidy install","Faucet dispense"]},
+  {name:"Leveluk JRIV", plates:"4 Plates · Starter", tag:"Entry Model",
+   desc:"A compact, affordable entry point into Kangen Water® — perfect for smaller households getting started.",
+   feats:["4 plates","Compact","Great starter","Lower entry cost"]},
+  {name:"Leveluk Super 501", plates:"7 Plates · Heavy Duty", tag:"Commercial",
+   desc:"Built for continuous, heavy-duty use — ideal for large families, offices, or light commercial settings.",
+   feats:["Heavy duty","High capacity","7 plates","Continuous use"]},
+  {name:"Anespa DX", plates:"Shower & Bath System", tag:"Whole-Body",
+   desc:"Transform your shower and bath with mineral-ion water. A spa-like experience for skin and hair, plus dechlorination.",
+   feats:["Shower system","Dechlorinates","Mineral ions","Spa feel"]}
+];
+const waterIcon = '<svg fill="none" stroke="#fff" stroke-width="1.6" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>';
+const grid = document.getElementById('machineGrid');
+machines.forEach(m=>{
+  const el = document.createElement('div');
+  el.className='mcard';
+  el.innerHTML = `
+    <span class="tag ${m.flag?'flag':''}">${m.tag}</span>
+    <div class="vis">${waterIcon}</div>
+    <h3>${m.name}</h3>
+    <div class="plates">${m.plates}</div>
+    <p>${m.desc}</p>
+    <ul>${m.feats.map(f=>`<li>${f}</li>`).join('')}</ul>
+    <button class="btn btn-primary mbtn" onclick="openLead('consult','${m.name}')">Get details & pricing →</button>`;
+  grid.appendChild(el);
+});
+
+/* ---------- LEAD CAPTURE (self-hosted backend API) ----------
+   The full CRM dashboard now lives at /admin (see public/admin.html). */
+async function saveLead(lead){
+  lead.created = new Date().toISOString();
+  try{
+    await fetch('/api/leads',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)});
+  }catch(e){ console.error('save failed',e); }
+  return lead;
+}
+
+/* ---------- LEAD FORM (inline) ---------- */
+async function submitLead(e){
+  e.preventDefault();
+  const f=e.target;
+  const lead={
+    type:'lead', intent:f.intent.value, name:f.name.value, email:f.email.value,
+    phone:f.phone.value, location:f.location.value, notes:f.notes.value
+  };
+  await saveLead(lead);
+  document.getElementById('leadForm').style.display='none';
+  document.getElementById('leadSuccess').classList.add('show');
+  return false;
+}
+function resetLead(){
+  document.getElementById('leadForm').reset();
+  document.getElementById('leadForm').style.display='block';
+  document.getElementById('leadSuccess').classList.remove('show');
+}
+
+/* ---------- LEAD MODAL ---------- */
+const intentMeta={
+  info:{eye:'Free Info Pack',title:'Get the full details — free',sub:"Fill this in and we'll send everything over.",loc:false},
+  sample:{eye:'Free Water Sample',title:'Claim your free gallons',sub:"Local to us? Add your city/ZIP and we'll arrange free Kangen Water® for you to try.",loc:true},
+  consult:{eye:'Free Consultation',title:'Get details & pricing',sub:"Tell us a bit about you and we'll reach out with everything — including current pricing and plans.",loc:false}
+};
+function openLead(intent, machine){
+  const m=intentMeta[intent]||intentMeta.info;
+  document.getElementById('leadModalEyebrow').textContent=m.eye;
+  document.getElementById('leadModalTitle').textContent=m.title;
+  document.getElementById('leadModalSub').textContent=m.sub;
+  document.getElementById('leadModalIntent').value=intent;
+  document.getElementById('leadModalLocField').style.display=m.loc?'block':'block';
+  const nf=document.getElementById('leadModalForm');
+  nf.dataset.machine = machine || '';
+  nf.notes.value = machine? ('Interested in: '+machine) : '';
+  nf.style.display='block';
+  document.getElementById('leadModalSuccess').classList.remove('show');
+  openModal('leadModal');
+}
+async function submitLeadModal(e){
+  e.preventDefault();
+  const f=e.target;
+  const lead={type:'lead',intent:f.intent.value,name:f.name.value,email:f.email.value,
+    phone:f.phone.value,location:f.location.value,machine:f.dataset.machine||'',notes:f.notes.value};
+  await saveLead(lead);
+  f.style.display='none';
+  document.getElementById('leadModalSuccess').classList.add('show');
+  return false;
+}
+
+/* ---------- BOOKING ---------- */
+function openBooking(){
+  document.getElementById('bookForm').style.display='block';
+  document.getElementById('bookForm').reset();
+  document.getElementById('bookSuccess').classList.remove('show');
+  openModal('bookingModal');
+}
+async function submitBooking(e){
+  e.preventDefault();
+  const f=e.target;
+  const lead={type:'booking',intent:'consult',name:f.name.value,email:f.email.value,
+    phone:f.phone.value,location:'',notes:'Consult booked: '+f.day.value+' at '+f.slot.value,
+    day:f.day.value, slot:f.slot.value};
+  await saveLead(lead);
+  document.getElementById('bookForm').style.display='none';
+  document.getElementById('bookSuccessMsg').textContent='See you '+f.day.value+' at '+f.slot.value+'. A calendar invite and reminder are on the way to '+f.email.value+'.';
+  document.getElementById('bookSuccess').classList.add('show');
+  return false;
+}
+
+/* ---------- MODALS ---------- */
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+document.querySelectorAll('.modal-bg').forEach(bg=>bg.addEventListener('click',e=>{if(e.target===bg)closeModal(bg.id);}));
+function scrollTo2(s){document.querySelector(s).scrollIntoView({behavior:'smooth'});}
+
+/* ---------- AI CHAT (Claude-powered) ---------- */
+const chatPanel=document.getElementById('chatPanel');
+let chatHistory=[];
+function toggleChat(){chatPanel.classList.toggle('open');document.querySelector('.chat-fab .dot').style.display='none';}
+function quickAsk(q){document.getElementById('chatInput').value=q;sendChat();}
+function addMsg(text,who){
+  const b=document.getElementById('chatBody');
+  const d=document.createElement('div');d.className='msg '+who;d.textContent=text;
+  b.appendChild(d);b.scrollTop=b.scrollHeight;return d;
+}
+function typing(on){
+  const b=document.getElementById('chatBody');
+  if(on){const d=document.createElement('div');d.className='msg typing';d.id='typingDot';d.innerHTML='<span></span><span></span><span></span>';b.appendChild(d);b.scrollTop=b.scrollHeight;}
+  else{const t=document.getElementById('typingDot');if(t)t.remove();}
+}
+
+async function sendChat(){
+  const input=document.getElementById('chatInput');
+  const text=input.value.trim();
+  if(!text)return;
+  addMsg(text,'user');input.value='';
+  chatHistory.push({role:'user',content:text});
+  typing(true);
+  try{
+    const res=await fetch("/api/chat",{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({messages:chatHistory})
+    });
+    const data=await res.json();
+    typing(false);
+    const reply=(data.reply||"").trim()
+      || "I'd love to help! The quickest way is to book a free consult or grab the free info pack above.";
+    addMsg(reply,'bot');
+    chatHistory.push({role:'assistant',content:reply});
+  }catch(e){
+    typing(false);
+    addMsg("Sorry, I'm having a hiccup connecting. Please use the 'Book Free Consult' button or the form on the page and we'll reach out personally!",'bot');
+  }
+}
+</script>
+</body>
+</html>

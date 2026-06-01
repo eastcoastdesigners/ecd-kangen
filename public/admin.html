@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ECD Kangen — Lead CRM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a1f2e; --deep:#0d2b3e; --teal:#0e7c86; --aqua:#1aa7b0; --mint:#7fd4c9;
+  --foam:#eef9f7; --sand:#f7f4ec; --gold:#c9a24b; --paper:#ffffff; --muted:#5a6b73;
+  --line:rgba(10,31,46,.10); --shadow:0 18px 50px -22px rgba(10,31,46,.45);
+  --display:'Fraunces',Georgia,serif; --body:'Outfit',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--body);color:var(--ink);background:var(--sand);line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em}
+a{color:var(--teal);text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+
+/* top bar */
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:1.15rem}
+.brand .mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--teal),var(--aqua));display:grid;place-items:center;color:#fff;font-weight:700;font-size:.9rem;font-family:var(--body)}
+.brand small{display:block;font-family:var(--body);font-weight:500;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:1px}
+.bar-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:100px;font-family:var(--body);font-weight:600;font-size:.86rem;cursor:pointer;border:none;transition:transform .15s,box-shadow .15s,border-color .15s,color .15s;white-space:nowrap}
+.btn-primary{background:linear-gradient(135deg,var(--teal),var(--aqua));color:#fff;box-shadow:0 10px 24px -12px rgba(14,124,134,.8)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
+.btn-sm{padding:7px 12px;font-size:.78rem}
+
+/* layout */
+main{padding:30px 0 60px}
+.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.page-head h1{font-size:2rem}
+.page-head .eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--teal);margin-bottom:6px}
+.page-head p{color:var(--muted);font-size:.9rem;margin-top:4px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:26px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:0 8px 24px -20px rgba(10,31,46,.5)}
+.stat b{font-family:var(--display);font-size:1.9rem;font-weight:600;display:block;line-height:1}
+.stat span{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:8px;display:block}
+.stat.accent b{color:var(--teal)}
+
+/* toolbar */
+.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.search{flex:1;min-width:200px;position:relative}
+.search input{width:100%;padding:11px 14px 11px 38px;border:1.5px solid var(--line);border-radius:12px;font-family:var(--body);font-size:.9rem;background:var(--paper)}
+.search input:focus{outline:none;border-color:var(--teal)}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--muted)}
+.filters{display:flex;gap:6px;flex-wrap:wrap}
+.chip{padding:8px 14px;border-radius:100px;border:1.5px solid var(--line);background:var(--paper);font-size:.8rem;font-weight:500;cursor:pointer;color:var(--muted);transition:.15s}
+.chip:hover{border-color:var(--teal)}
+.chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* table */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.table-scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+th{text-align:left;padding:14px 16px;border-bottom:2px solid var(--line);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);white-space:nowrap;background:var(--foam)}
+td{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--foam)}
+.cell-name{font-weight:600}
+.cell-sub{color:var(--muted);font-size:.78rem}
+.mono{font-variant-numeric:tabular-nums}
+.notes{max-width:240px;font-size:.8rem;color:var(--muted)}
+
+/* tags */
+.tag{display:inline-block;padding:3px 10px;border-radius:100px;font-size:.7rem;font-weight:600;letter-spacing:.02em}
+.t-info{background:#eef2f7;color:#46606e}
+.t-sample{background:#e6f7f1;color:#0e7c5a}
+.t-consult{background:var(--foam);color:var(--teal)}
+.t-buy{background:#fbf1d9;color:#9a7a1e}
+.t-booking{background:#e9e6fb;color:#5a4ba0}
+
+/* status select */
+.status-sel{padding:6px 10px;border-radius:100px;border:1.5px solid var(--line);font-family:var(--body);font-size:.76rem;font-weight:600;cursor:pointer;background:var(--paper)}
+.status-sel.s-new{color:var(--teal);border-color:var(--mint)}
+.status-sel.s-contacted{color:#9a7a1e;border-color:#e8d39a}
+.status-sel.s-won{color:#0e7c5a;border-color:#9ad9c0}
+.status-sel.s-lost{color:#a04b4b;border-color:#e0b3b3}
+
+.row-actions{display:flex;gap:6px}
+.icon-btn{background:none;border:1px solid var(--line);border-radius:8px;width:30px;height:30px;cursor:pointer;color:var(--muted);font-size:.9rem;transition:.15s}
+.icon-btn:hover{border-color:#a04b4b;color:#a04b4b}
+
+.empty{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty h3{color:var(--ink);margin-bottom:8px}
+
+/* login gate */
+.gate{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.gate-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:40px;max-width:420px;width:100%}
+.gate-card .mark{width:48px;height:48px;border-radius:13px;background:linear-gradient(135deg,var(--teal),var(--aqua));display:grid;place-items:center;color:#fff;font-weight:700;font-family:var(--body);margin-bottom:20px}
+.gate-card h1{font-size:1.5rem;margin-bottom:6px}
+.gate-card p{color:var(--muted);font-size:.9rem;margin-bottom:22px}
+.gate-card label{display:block;font-size:.8rem;font-weight:600;margin-bottom:7px}
+.gate-card input{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;font-family:var(--body);font-size:.95rem;margin-bottom:16px}
+.gate-card input:focus{outline:none;border-color:var(--teal)}
+.gate-card .btn{width:100%;justify-content:center}
+.gate-err{color:#a04b4b;font-size:.84rem;margin-bottom:14px;display:none}
+.gate-err.show{display:block}
+
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;padding:12px 22px;border-radius:100px;font-size:.86rem;font-weight:500;opacity:0;pointer-events:none;transition:.25s;z-index:50}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(max-width:900px){.stats{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.stats{grid-template-columns:1fr 1fr}.page-head h1{font-size:1.6rem}.bar{height:auto;padding:12px 0}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN GATE -->
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <div class="mark">ECD</div>
+    <h1>Lead CRM</h1>
+    <p>East Coast Designers · internal access only. Enter your admin key to continue.</p>
+    <form id="gateForm" onsubmit="return doLogin(event)">
+      <label for="keyInput">Admin key</label>
+      <input type="password" id="keyInput" placeholder="••••••••••••" autocomplete="current-password" required>
+      <div class="gate-err" id="gateErr">That key didn't work. Please try again.</div>
+      <button class="btn btn-primary" type="submit">Sign in →</button>
+    </form>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none">
+  <header>
+    <div class="wrap bar">
+      <div class="brand">
+        <div class="mark">ECD</div>
+        <div>ECD Kangen<small>Lead CRM</small></div>
+      </div>
+      <div class="bar-actions">
+        <a class="btn btn-ghost btn-sm" href="/" target="_blank">View site ↗</a>
+        <button class="btn btn-ghost btn-sm" onclick="loadLeads()">↻ Refresh</button>
+        <button class="btn btn-primary btn-sm" onclick="exportCsv()">⬇ Export CSV</button>
+        <button class="btn btn-ghost btn-sm" onclick="signOut()">Sign out</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="page-head">
+        <div>
+          <div class="eyebrow">East Coast Designers · Internal</div>
+          <h1>Leads</h1>
+          <p>Every form submission and booking from the website lands here automatically.</p>
+        </div>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="toolbar">
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="searchInput" type="search" placeholder="Search name, email, phone, notes…" oninput="render()">
+        </div>
+        <div class="filters" id="intentFilters"></div>
+        <div class="filters" id="statusFilters"></div>
+      </div>
+
+      <div class="card">
+        <div class="table-scroll" id="tableWrap"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ---------- auth ---------- */
+function getKey(){ return sessionStorage.getItem('ecd_admin') || ''; }
+function setKey(k){ sessionStorage.setItem('ecd_admin', k); }
+
+let LEADS = [];
+let intentFilter = 'all';
+let statusFilter = 'all';
+
+const INTENTS = [
+  {k:'all', label:'All types'},
+  {k:'consult', label:'Consult'},
+  {k:'sample', label:'Free water'},
+  {k:'info', label:'Info'},
+  {k:'buy', label:'Buy'}
+];
+const STATUSES = ['new','contacted','won','lost'];
+const STATUS_FILTERS = [{k:'all',label:'All statuses'}, ...STATUSES.map(s=>({k:s,label:s[0].toUpperCase()+s.slice(1)}))];
+
+const TAG_CLASS = {info:'t-info',sample:'t-sample',consult:'t-consult',buy:'t-buy'};
+const TAG_LABEL = {info:'Info',sample:'Free Water',consult:'Consult',buy:'Buy'};
+
+function esc(s){return (s==null?'':String(s)).replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));}
+
+async function api(path, opts={}){
+  const sep = path.includes('?') ? '&' : '?';
+  const res = await fetch(path + sep + 'key=' + encodeURIComponent(getKey()), opts);
+  return res;
+}
+
+async function doLogin(e){
+  e.preventDefault();
+  const k = document.getElementById('keyInput').value.trim();
+  setKey(k);
+  const res = await fetch('/api/leads?key=' + encodeURIComponent(k));
+  if(res.ok){
+    document.getElementById('gateErr').classList.remove('show');
+    showApp();
+    LEADS = await res.json();
+    buildFilters();
+    renderStats();
+    render();
+  } else {
+    document.getElementById('gateErr').classList.add('show');
+    sessionStorage.removeItem('ecd_admin');
+  }
+  return false;
+}
+
+function showApp(){
+  document.getElementById('gate').style.display='none';
+  document.getElementById('app').style.display='block';
+}
+function signOut(){
+  sessionStorage.removeItem('ecd_admin');
+  location.reload();
+}
+
+async function loadLeads(){
+  const res = await api('/api/leads');
+  if(!res.ok){ signOut(); return; }
+  LEADS = await res.json();
+  renderStats();
+  render();
+  toast('Refreshed');
+}
+
+/* ---------- filters ---------- */
+function buildFilters(){
+  document.getElementById('intentFilters').innerHTML = INTENTS.map(i=>
+    `<button class="chip ${i.k===intentFilter?'on':''}" onclick="setIntent('${i.k}')">${i.label}</button>`).join('');
+  document.getElementById('statusFilters').innerHTML = STATUS_FILTERS.map(s=>
+    `<button class="chip ${s.k===statusFilter?'on':''}" onclick="setStatus('${s.k}')">${s.label}</button>`).join('');
+}
+function setIntent(k){ intentFilter=k; buildFilters(); render(); }
+function setStatus(k){ statusFilter=k; buildFilters(); render(); }
+
+/* ---------- stats ---------- */
+function renderStats(){
+  const n = t => LEADS.filter(l=>l.intent===t).length;
+  const newCount = LEADS.filter(l=>(l.status||'new')==='new').length;
+  document.getElementById('stats').innerHTML = `
+    <div class="stat accent"><b>${LEADS.length}</b><span>Total leads</span></div>
+    <div class="stat"><b>${newCount}</b><span>New / unworked</span></div>
+    <div class="stat"><b>${n('sample')}</b><span>Free-water requests</span></div>
+    <div class="stat"><b>${n('consult')}</b><span>Consults / pricing</span></div>
+    <div class="stat"><b>${LEADS.filter(l=>l.type==='booking').length}</b><span>Booked calls</span></div>`;
+}
+
+/* ---------- table ---------- */
+function filtered(){
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  return LEADS.filter(l=>{
+    if(intentFilter!=='all' && l.intent!==intentFilter) return false;
+    if(statusFilter!=='all' && (l.status||'new')!==statusFilter) return false;
+    if(q){
+      const hay = [l.name,l.email,l.phone,l.location,l.machine,l.notes].join(' ').toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function render(){
+  const rows = filtered();
+  const wrap = document.getElementById('tableWrap');
+  if(!LEADS.length){
+    wrap.innerHTML = `<div class="empty"><h3>No leads yet</h3><p>Submissions from the website will show up here automatically.</p></div>`;
+    return;
+  }
+  if(!rows.length){
+    wrap.innerHTML = `<div class="empty"><h3>No matches</h3><p>Try clearing the search or filters.</p></div>`;
+    return;
+  }
+  wrap.innerHTML = `<table>
+    <thead><tr>
+      <th>Date</th><th>Name</th><th>Contact</th><th>Type</th>
+      <th>Location</th><th>Notes</th><th>Status</th><th></th>
+    </tr></thead>
+    <tbody>${rows.map(rowHtml).join('')}</tbody>
+  </table>`;
+}
+
+function rowHtml(l){
+  const d = new Date(l.created);
+  const date = isNaN(d) ? esc(l.created) : d.toLocaleDateString([], {month:'short',day:'numeric',year:'numeric'});
+  const time = isNaN(d) ? '' : d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  const intentTag = `<span class="tag ${TAG_CLASS[l.intent]||'t-info'}">${TAG_LABEL[l.intent]||esc(l.intent)}</span>`;
+  const bookingTag = l.type==='booking' ? `<br><span class="tag t-booking" style="margin-top:4px">📅 ${esc(l.day||'')} ${esc(l.slot||'')}</span>` : '';
+  const status = l.status || 'new';
+  return `<tr>
+    <td class="mono"><span class="cell-name" style="font-weight:500">${date}</span><br><span class="cell-sub">${time}</span></td>
+    <td><span class="cell-name">${esc(l.name)||'—'}</span>${l.machine?`<br><span class="cell-sub">${esc(l.machine)}</span>`:''}</td>
+    <td>${l.email?`<a href="mailto:${esc(l.email)}">${esc(l.email)}</a>`:'—'}<br><span class="cell-sub mono">${esc(l.phone)||'—'}</span></td>
+    <td>${intentTag}${bookingTag}</td>
+    <td>${esc(l.location)||'—'}</td>
+    <td class="notes">${esc(l.notes)||'—'}</td>
+    <td>
+      <select class="status-sel s-${status}" onchange="updateStatus(${l.id}, this.value, this)">
+        ${STATUSES.map(s=>`<option value="${s}" ${s===status?'selected':''}>${s[0].toUpperCase()+s.slice(1)}</option>`).join('')}
+      </select>
+    </td>
+    <td><div class="row-actions"><button class="icon-btn" title="Delete lead" onclick="deleteLead(${l.id})">🗑</button></div></td>
+  </tr>`;
+}
+
+/* ---------- mutations ---------- */
+async function updateStatus(id, status, el){
+  el.className = 'status-sel s-' + status;
+  const res = await api('/api/leads/'+id, {
+    method:'PATCH',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({status})
+  });
+  if(res.ok){
+    const lead = LEADS.find(l=>l.id===id);
+    if(lead) lead.status = status;
+    renderStats();
+    toast('Status updated');
+  } else { toast('Update failed'); }
+}
+
+async function deleteLead(id){
+  const lead = LEADS.find(l=>l.id===id);
+  if(!confirm(`Delete lead from ${lead && lead.name ? lead.name : 'this visitor'}? This cannot be undone.`)) return;
+  const res = await api('/api/leads/'+id, {method:'DELETE'});
+  if(res.ok){
+    LEADS = LEADS.filter(l=>l.id!==id);
+    renderStats();
+    render();
+    toast('Lead deleted');
+  } else { toast('Delete failed'); }
+}
+
+function exportCsv(){
+  window.open('/api/leads.csv?key=' + encodeURIComponent(getKey()), '_blank');
+}
+
+/* ---------- toast ---------- */
+let toastTimer;
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+/* ---------- boot ---------- */
+(async function init(){
+  if(!getKey()) return; // show gate
+  const res = await fetch('/api/leads?key=' + encodeURIComponent(getKey()));
+  if(!res.ok){ sessionStorage.removeItem('ecd_admin'); return; }
+  showApp();
+  LEADS = await res.json();
+  buildFilters();
+  renderStats();
+  render();
+})();
+</script>
+</body>
+</html>

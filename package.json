@@ -1,0 +1,20 @@
+{
+  "name": "ecd-kangen",
+  "version": "1.0.0",
+  "description": "ECD Kangen — Enagic Kangen Water distributor site with self-hosted CRM and AI assistant. By East Coast Designers.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "nodemailer": "^8.0.10"
+  },
+  "license": "UNLICENSED"
+}

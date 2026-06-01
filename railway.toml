@@ -1,0 +1,10 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "npm start"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+# After first deploy, add a Volume in the Railway dashboard mounted at /data,
+# then set the DATA_DIR variable to /data so the SQLite CRM database persists.
