@@ -13,8 +13,14 @@ out-convert competitor distributor sites.
 - **better-sqlite3** — the CRM database. **No third-party CRM. Never integrate
   GoHighLevel** — the owner is building this to *replace* GoHighLevel-style tools.
 - **Static frontend** in `public/index.html` (single file: HTML/CSS/JS).
-- **Claude API** powers the on-site chat assistant, proxied through
-  `/api/chat` so the API key stays server-side.
+- **Claude API** powers the on-site chat assistant (**Jackie**, text mode),
+  proxied through `/api/chat` so the API key stays server-side.
+- **OpenAI Realtime API** powers Jackie's optional **live voice** mode. The
+  browser does WebRTC directly with OpenAI using a short-lived ephemeral key
+  minted by `/api/realtime/session` (the real `OPENAI_API_KEY` never leaves the
+  server). Voice is optional — with no OpenAI key, the mic shows a friendly
+  "not set up" message and text chat still works. The spoken instructions carry
+  the SAME compliance HARD RULES as the text prompt.
 
 ## Run locally
 ```
@@ -29,7 +35,9 @@ npm start              # http://localhost:3000
 - `GET  /api/leads` — admin; needs `?key=ADMIN_KEY`.
 - `PATCH/DELETE /api/leads/:id` — admin (PATCH sets `status`: new/contacted/won/lost).
 - `GET  /api/leads.csv` — admin CSV export.
-- `POST /api/chat` — Claude proxy for the chat widget.
+- `POST /api/chat` — Claude proxy for Jackie's text chat.
+- `POST /api/realtime/session` — mints a short-lived OpenAI Realtime token for
+  Jackie's live voice (503 if `OPENAI_API_KEY` unset).
 - `GET  /admin` — full CRM dashboard page (`public/admin.html`); prompts for the
   admin key, then uses the `/api/leads` endpoints above.
 - `GET  /healthz` — health check.
@@ -44,8 +52,9 @@ email failure never blocks a lead submission.
 
 ## Deployment
 GitHub -> Railway. `railway.toml` is set up. Add a Railway **Volume** mounted at
-`/data` and set `DATA_DIR=/data` so the SQLite DB survives redeploys. Set
-`ANTHROPIC_API_KEY`, `ADMIN_KEY`, and `CLAUDE_MODEL` as Railway variables.
+`/data` and set `DATA_DIR=/data` so the leads database survives redeploys. Set
+`ANTHROPIC_API_KEY`, `ADMIN_KEY`, and `CLAUDE_MODEL` as Railway variables. For
+Jackie's voice, also set `OPENAI_API_KEY` (optional; voice stays off without it).
 
 ## HARD RULES — compliance (do not violate)
 1. **No health/medical claims.** Never state or imply the water/machine treats,

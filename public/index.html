@@ -199,7 +199,15 @@ footer{background:var(--ink);color:#fff;padding:64px 0 30px}
 .chat-head .av{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.18);display:grid;place-items:center;font-weight:700;font-family:var(--display)}
 .chat-head h4{color:#fff;font-size:1.02rem}
 .chat-head p{font-size:.74rem;opacity:.8}
-.chat-head .x{margin-left:auto;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;opacity:.8}
+.chat-head .voice-btn{margin-left:auto;background:rgba(255,255,255,.16);border:none;color:#fff;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer;transition:.2s;flex:none}
+.chat-head .voice-btn svg{width:18px;height:18px}
+.chat-head .voice-btn:hover{background:rgba(255,255,255,.3)}
+.chat-head .voice-btn.connecting{background:var(--gold);animation:pulse 1.1s infinite}
+.chat-head .voice-btn.listening{background:#e0524d;box-shadow:0 0 0 0 rgba(224,82,77,.6);animation:ring 1.6s infinite}
+.chat-head .voice-btn.speaking{background:var(--aqua);animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(224,82,77,.55)}70%{box-shadow:0 0 0 12px rgba(224,82,77,0)}100%{box-shadow:0 0 0 0 rgba(224,82,77,0)}}
+.chat-head .x{background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;opacity:.8;flex:none}
 .chat-body{flex:1;overflow-y:auto;padding:18px;background:var(--foam);display:flex;flex-direction:column;gap:12px}
 .msg{max-width:84%;padding:11px 15px;border-radius:16px;font-size:.9rem;line-height:1.5}
 .msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:5px}
@@ -522,7 +530,7 @@ footer{background:var(--ink);color:#fff;padding:64px 0 30px}
       </div>
       <div><h5>Explore</h5><a href="#machines">Machines</a><a href="#offers">Free Trial</a><a href="#how">How It Works</a><a href="#faq">FAQ</a></div>
       <div><h5>Get Started</h5><a href="#" onclick="openLead('info');return false">Free Info Pack</a><a href="#" onclick="openLead('sample');return false">Free Water Sample</a><a href="#" onclick="openBooking();return false">Book a Consult</a></div>
-      <div><h5>Contact</h5><a href="mailto:hello@ecdkangen.com">hello@ecdkangen.com</a><a href="tel:+10000000000">(000) 000-0000</a><a href="#" onclick="toggleChat();return false">Chat with our AI assistant</a></div>
+      <div><h5>Contact</h5><a href="mailto:hello@ecdkangen.com">hello@ecdkangen.com</a><a href="tel:+10000000000">(000) 000-0000</a><a href="#" onclick="toggleChat();return false">Chat with Jackie, our AI assistant</a></div>
     </div>
     <div class="disclaimer">
       <strong>Important disclaimer:</strong> ECD Kangen is operated by East Coast Designers, an independent Enagic® distributor. Kangen Water®, Enagic®, and Leveluk® are registered trademarks of Enagic Co., Ltd. We are not employed by Enagic. *Enagic ionizers are certified as medical devices by Japan's Ministry of Health, Labour and Welfare; this is a Japanese regulatory classification of the device and its manufacturing, not a US FDA medical-device clearance, and it is not a claim of any health benefit. Statements on this site have not been evaluated by the FDA. The machines are not intended to diagnose, treat, cure, or prevent any disease. We make no medical or health claims. Any income from the distributor opportunity depends on individual effort and is not guaranteed. Always consult a qualified healthcare professional regarding your health.
@@ -544,12 +552,15 @@ footer{background:var(--ink);color:#fff;padding:64px 0 30px}
 </button>
 <div class="chat-panel" id="chatPanel">
   <div class="chat-head">
-    <div class="av">EC</div>
-    <div><h4>ECD Water Assistant</h4><p>● Online · usually replies instantly</p></div>
+    <div class="av">J</div>
+    <div><h4>Jackie · ECD Kangen</h4><p id="chatStatus">● Online · type or tap the mic to talk</p></div>
+    <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()" title="Talk to Jackie" aria-label="Talk to Jackie">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4"/></svg>
+    </button>
     <button class="x" onclick="toggleChat()">×</button>
   </div>
   <div class="chat-body" id="chatBody">
-    <div class="msg bot">Hi! 👋 I'm the ECD Kangen assistant. I can tell you about the machines, financing, how to try the water free, or book your consult. What would you like to know?</div>
+    <div class="msg bot">Hi! 👋 I'm Jackie, your ECD Kangen guide. I can tell you about the machines, financing, how to try the water free, or book your consult — type a question or tap the mic to talk with me. What would you like to know?</div>
   </div>
   <div class="chat-quick" id="chatQuick">
     <button onclick="quickAsk('What machines do you offer?')">The machines</button>
@@ -750,7 +761,7 @@ function closeModal(id){document.getElementById(id).classList.remove('open');doc
 document.querySelectorAll('.modal-bg').forEach(bg=>bg.addEventListener('click',e=>{if(e.target===bg)closeModal(bg.id);}));
 function scrollTo2(s){document.querySelector(s).scrollIntoView({behavior:'smooth'});}
 
-/* ---------- AI CHAT (Claude-powered) ---------- */
+/* ---------- JACKIE — TEXT CHAT (Claude-powered) ---------- */
 const chatPanel=document.getElementById('chatPanel');
 let chatHistory=[];
 function toggleChat(){chatPanel.classList.toggle('open');document.querySelector('.chat-fab .dot').style.display='none';}
@@ -788,6 +799,124 @@ async function sendChat(){
     typing(false);
     addMsg("Sorry, I'm having a hiccup connecting. Please use the 'Book Free Consult' button or the form on the page and we'll reach out personally!",'bot');
   }
+}
+
+/* ---------- JACKIE — LIVE VOICE (OpenAI Realtime via WebRTC) ----------
+   The browser talks WebRTC directly to OpenAI using a short-lived token
+   minted by /api/realtime/session (the real API key stays server-side).
+   Voice and text share chatHistory, so Jackie keeps context across both. */
+const voice = { state:'off', pc:null, mic:null, dc:null, audioEl:null, idle:null,
+  lastActivity:0, want:false, reconnected:false, botIdx:null };
+
+function setVoiceState(s){
+  voice.state = s;
+  const btn = document.getElementById('voiceBtn');
+  const status = document.getElementById('chatStatus');
+  btn.classList.remove('connecting','listening','speaking');
+  if(s==='off'){ status.textContent='● Online · type or tap the mic to talk'; return; }
+  btn.classList.add(s);
+  status.textContent = s==='connecting' ? '● Connecting voice…'
+    : s==='listening' ? '🔴 Listening — speak now (tap mic to stop)'
+    : s==='speaking' ? '🔊 Jackie is speaking…' : status.textContent;
+}
+
+function toggleVoice(){ voice.state==='off' ? startVoice() : stopVoice(); }
+
+async function startVoice(){
+  if(voice.state!=='off') return;
+  if(!chatPanel.classList.contains('open')) toggleChat();
+  setVoiceState('connecting');
+  voice.want=true; voice.lastActivity=Date.now(); voice.botIdx=null;
+
+  let token, model;
+  try{
+    const res=await fetch('/api/realtime/session',{method:'POST'});
+    const data=await res.json();
+    if(!res.ok){ setVoiceState('off'); voice.want=false; addMsg(data.error||"Voice isn't available right now — you can still type to me.",'bot'); return; }
+    token=data.client_secret; model=data.model||'gpt-realtime';
+  }catch(e){ setVoiceState('off'); voice.want=false; addMsg("I couldn't reach the voice service. Type to me instead!",'bot'); return; }
+
+  let mic;
+  try{ mic=await navigator.mediaDevices.getUserMedia({audio:true}); }
+  catch(err){ setVoiceState('off'); voice.want=false; addMsg("I couldn't access your microphone. Allow mic permission (and use https or localhost), then tap the mic again.",'bot'); return; }
+  voice.mic=mic;
+
+  try{
+    const pc=new RTCPeerConnection(); voice.pc=pc;
+    // Jackie's voice arrives on a remote media track — WebRTC plays it for us.
+    const audioEl=new Audio(); audioEl.autoplay=true; voice.audioEl=audioEl;
+    pc.ontrack=ev=>{ audioEl.srcObject=ev.streams[0]; };
+    mic.getAudioTracks().forEach(t=>pc.addTrack(t,mic));
+    // Data channel carries transcripts + turn/VAD events.
+    const dc=pc.createDataChannel('oai-events'); voice.dc=dc;
+    dc.onopen=()=>{ setVoiceState('listening'); startIdle(); };
+    dc.onmessage=ev=>{ let m; try{m=JSON.parse(ev.data);}catch{return;} handleRealtime(m); };
+    pc.onconnectionstatechange=()=>{
+      if(['failed','disconnected','closed'].includes(pc.connectionState)){
+        const wasActive=voice.want; teardownVoice();
+        if(wasActive && !voice.reconnected){ voice.reconnected=true; setTimeout(()=>{ if(voice.want!==false) startVoice(); },800); }
+      }
+    };
+    const offer=await pc.createOffer(); await pc.setLocalDescription(offer);
+    const sdpRes=await fetch('https://api.openai.com/v1/realtime/calls?model='+encodeURIComponent(model),{
+      method:'POST', body:offer.sdp, headers:{'Authorization':'Bearer '+token,'Content-Type':'application/sdp'}
+    });
+    if(!sdpRes.ok){ addMsg("I couldn't start the voice session — your OpenAI key may not have Realtime access. You can still type to me.",'bot'); teardownVoice(); return; }
+    const answer=await sdpRes.text();
+    await pc.setRemoteDescription({type:'answer',sdp:answer});
+  }catch(e){ teardownVoice(); }
+}
+
+function stopVoice(){ voice.want=false; voice.reconnected=false; teardownVoice(); }
+
+function teardownVoice(){
+  if(voice.idle){ clearInterval(voice.idle); voice.idle=null; }
+  try{ if(voice.dc){ voice.dc.onmessage=null; voice.dc.close(); voice.dc=null; } }catch(e){}
+  try{ if(voice.mic){ voice.mic.getTracks().forEach(t=>t.stop()); voice.mic=null; } }catch(e){}
+  try{ if(voice.audioEl){ voice.audioEl.srcObject=null; voice.audioEl=null; } }catch(e){}
+  try{ if(voice.pc){ voice.pc.onconnectionstatechange=null; voice.pc.ontrack=null; voice.pc.close(); voice.pc=null; } }catch(e){}
+  voice.botIdx=null;
+  setVoiceState('off');
+}
+
+function handleRealtime(msg){
+  voice.lastActivity=Date.now();
+  switch(msg.type){
+    case 'input_audio_buffer.speech_started':
+      if(voice.state==='speaking') setVoiceState('listening');
+      break;
+    case 'conversation.item.input_audio_transcription.completed':
+      if(msg.transcript && msg.transcript.trim()){
+        const t=msg.transcript.trim();
+        addMsg(t,'user'); chatHistory.push({role:'user',content:t});
+      }
+      break;
+    // GA event names are output_*; keep the older names too for safety.
+    case 'response.output_audio_transcript.delta':
+    case 'response.audio_transcript.delta':
+      setVoiceState('speaking');
+      if(voice.botIdx===null){ voice.botIdx=addMsg(msg.delta||'','bot'); }
+      else { voice.botIdx.textContent += (msg.delta||''); document.getElementById('chatBody').scrollTop=1e9; }
+      break;
+    case 'response.done':
+    case 'response.output_audio.done':
+    case 'response.audio.done':
+      if(voice.botIdx){ chatHistory.push({role:'assistant',content:voice.botIdx.textContent}); }
+      voice.botIdx=null;
+      if(voice.state==='speaking') setTimeout(()=>{ if(voice.state==='speaking') setVoiceState('listening'); },400);
+      break;
+    case 'error':
+      console.error('Realtime error:',msg.error);
+      break;
+  }
+}
+
+function startIdle(){
+  if(voice.idle) clearInterval(voice.idle);
+  const IDLE_MS=120000; // hang up after 2 min of silence to save credits
+  voice.idle=setInterval(()=>{
+    if(voice.state!=='off' && Date.now()-(voice.lastActivity||0)>IDLE_MS) stopVoice();
+  },5000);
 }
 </script>
 </body>

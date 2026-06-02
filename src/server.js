@@ -187,9 +187,9 @@ app.get("/api/leads.csv", requireAdmin, (_req, res) => {
 /* ---------------------------------------------------------------
    CLAUDE API PROXY  — keeps your API key server-side (never in browser)
 ----------------------------------------------------------------*/
-const SYSTEM_PROMPT = `You are the friendly AI assistant for ECD Kangen, an authorized independent Enagic Kangen Water distributor operated by East Coast Designers.
+const SYSTEM_PROMPT = `You are Jackie, the warm, upbeat AI assistant for ECD Kangen, an authorized independent Enagic Kangen Water distributor operated by East Coast Designers. You're like a smart, friendly guide who happens to know Kangen Water inside out.
 
-YOUR JOB: warmly help visitors understand the machines, encourage them to try the water free or book a free 30-minute consultation, and capture interest. Keep replies short (2-4 sentences), conversational, helpful.
+YOUR JOB: warmly help visitors understand the machines, encourage them to try the water free or book a free 30-minute consultation, and capture interest. Keep replies short (2-4 sentences), conversational, and use contractions — sound like a helpful person, not a brochure.
 
 WHAT YOU KNOW:
 - Machines: Leveluk K8 (8-plate flagship), SD501DX (7-plate gold standard, best seller), SD501U (under-counter), JRIV (4-plate starter), Super 501 (heavy duty), Anespa DX (shower/bath system).
@@ -229,6 +229,104 @@ app.post("/api/chat", async (req, res) => {
   } catch (e) {
     console.error(e);
     res.status(500).json({ error: "chat_failed" });
+  }
+});
+
+/* ---------------------------------------------------------------
+   JACKIE VOICE  — live spoken assistant via OpenAI's Realtime API.
+   The browser does WebRTC directly with OpenAI using a short-lived
+   ephemeral key minted here, so the real OPENAI_API_KEY never leaves
+   the server. Voice is OPTIONAL: with no OpenAI key, /api/realtime/
+   session returns 503 and the widget stays text-only on Claude.
+
+   IMPORTANT: these spoken instructions carry the SAME compliance
+   HARD RULES as the text assistant (no health claims, no prices) —
+   voice must never say something the text chat couldn't.
+----------------------------------------------------------------*/
+const REALTIME_MODEL = process.env.OPENAI_REALTIME_MODEL || "gpt-realtime";
+const REALTIME_VOICE = process.env.OPENAI_REALTIME_VOICE || "shimmer";
+
+const JACKIE_VOICE_INSTRUCTIONS = `You are Jackie, a warm, upbeat assistant for ECD Kangen (an authorized independent Enagic Kangen Water distributor by East Coast Designers), having a live VOICE conversation with a website visitor.
+
+HOW YOU SPEAK: Naturally, like a friendly person on a phone call. Use contractions. Keep answers to 1-3 short sentences. If something needs more detail, give the headline first and ask if they'd like you to go deeper. Never read lists or markdown aloud — just talk.
+
+WHAT YOU KNOW:
+- Machines: Leveluk K8 (8-plate flagship), SD501DX (7-plate gold standard, best seller), SD501U (under-counter), JRIV (4-plate starter), Super 501 (heavy duty), Anespa DX (shower/bath system).
+- Certifications (TRUE — you may say these): Enagic ionizers are certified as MEDICAL DEVICES by Japan's Ministry of Health, Labour and Welfare; manufacturing is ISO 13485 and ISO 9001 certified; WQA Gold Seal; used in hundreds of hospitals in Japan. If pressed, clarify this is a JAPANESE certification, not a US FDA clearance.
+- Payment: credit/debit accepted, in-house financing, pay in full or deposit plus installments. For exact pricing, point them to a free consult.
+- Free ways to start: free info pack (anyone), free gallons of water to test (if local), free 30-minute consultation.
+- Buying a machine also lets them become an Enagic distributor if they want.
+
+CRITICAL RULES (never break these, even out loud):
+- NEVER make medical or health claims. Do NOT say the water or machine treats, cures, prevents, relieves, or helps any disease, condition, or symptom. The Japanese medical-device CERTIFICATION is about the device's regulatory classification — it is NOT a claim that it heals anything.
+- If asked about health benefits, talk about hydration, taste, and water quality, and suggest they ask their doctor for any health concern.
+- Don't quote specific prices; guide them to a free consult.
+- Be honest and low-pressure. Gently nudge toward booking a consult, grabbing the free info pack, or trying free water.`;
+
+// Return a real OpenAI key usable for the Realtime API, or null.
+function getRealtimeOpenAIKey() {
+  const key = (process.env.OPENAI_API_KEY || "").trim();
+  // An OpenRouter key (sk-or-...) cannot open a realtime session.
+  if (key && !key.startsWith("sk-or-")) return key;
+  return null;
+}
+
+// Mint a short-lived OpenAI Realtime client secret for the browser.
+app.post("/api/realtime/session", async (req, res) => {
+  const apiKey = getRealtimeOpenAIKey();
+  if (!apiKey) {
+    return res.status(503).json({
+      error: "Voice isn't set up yet. Add an OPENAI_API_KEY on the server to enable Jackie's voice — text chat still works."
+    });
+  }
+  try {
+    // GA Realtime API: ephemeral keys come from /v1/realtime/client_secrets
+    // (the Beta /v1/realtime/sessions endpoint was retired). Audio config
+    // (voice, transcription, turn detection) lives under "audio".
+    const r = await fetch("https://api.openai.com/v1/realtime/client_secrets", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        session: {
+          type: "realtime",
+          model: REALTIME_MODEL,
+          instructions: JACKIE_VOICE_INSTRUCTIONS,
+          audio: {
+            input: {
+              transcription: { model: "whisper-1" },
+              turn_detection: {
+                type: "server_vad",
+                threshold: 0.5,
+                prefix_padding_ms: 300,
+                silence_duration_ms: 500
+              }
+            },
+            output: { voice: REALTIME_VOICE }
+          }
+        }
+      })
+    });
+    const data = await r.json();
+    if (!r.ok) {
+      console.error("[voice] realtime session failed:", JSON.stringify(data).slice(0, 300));
+      return res.status(502).json({
+        error: "Couldn't start the voice session. Check that the OpenAI key has Realtime API access.",
+        detail: (data.error && data.error.message) || ""
+      });
+    }
+    // GA returns the secret at top-level "value"; tolerate the older nested shape.
+    const secret = data.value || (data.client_secret && data.client_secret.value);
+    if (!secret) {
+      console.error("[voice] no client secret in response:", JSON.stringify(data).slice(0, 300));
+      return res.status(502).json({ error: "Voice service returned no session token." });
+    }
+    res.json({ client_secret: secret, expires_at: data.expires_at, model: REALTIME_MODEL });
+  } catch (e) {
+    console.error("[voice]", e);
+    res.status(502).json({ error: "Couldn't reach the voice service. Please try again." });
   }
 });
 
